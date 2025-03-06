@@ -29,12 +29,12 @@ def format_linter_report(linter_report: dict) -> list:
         "name": error["code"],
         "source": "flake8"
     } for error in value],
-        "path": errors,
+        "path": file_path,
         "status": "failed",
     }
         if len(value) != 0 else {
         "errors": [],
-        "path": errors,
+        "path": file_path,
         "status": "passed"
     }
-        for errors, value in linter_report.items()]
+        for file_path, value in linter_report.items()]
